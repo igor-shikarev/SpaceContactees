@@ -1,4 +1,4 @@
-# Space Contactees
+# Space Contactees (Игра Контактёры или Космический путь)
 
 Using [Castle Game Engine](https://castle-engine.io/).
 
