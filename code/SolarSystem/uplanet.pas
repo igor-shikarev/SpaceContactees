@@ -18,11 +18,16 @@ type
   private
     FPlanet: TCastleScene;
     FSphere: TCastleSphere;
+    FSpeed: Single;
   public
     constructor Create(AOwner: TComponent); override;
     procedure Update(const SecondsPassed: Single; var RemoveMe: TRemoveType); override;
-    // установка радиуса орбиты
-    procedure SetOrbitRadius(const AValue: Single);
+    {
+    Установка параметров планеты
+    AOrbitalRadius - радиус орбиты планеты
+    ASpeed - скорость вращения вокруг солнца
+    }
+    procedure SetParams(const AOrbitalRadius, ASpeed: Single);
 	end;
 
 implementation
@@ -50,12 +55,13 @@ end;
 procedure TPlanet.Update(const SecondsPassed: Single; var RemoveMe: TRemoveType);
 begin
   inherited Update(SecondsPassed, RemoveMe);
-  Self.Rotation := Vector4(Self.Rotation.XYZ, Self.Rotation.W + 0.001);
+  Self.Rotation := Vector4(Self.Rotation.XYZ, Self.Rotation.W + (FSpeed * SecondsPassed));
 end;
 
-procedure TPlanet.SetOrbitRadius(const AValue: Single);
+procedure TPlanet.SetParams(const AOrbitalRadius, ASpeed: Single);
 begin
-  FSphere.Translation := Vector3(AValue, 0, 0);
+  FSphere.Translation := Vector3(AOrbitalRadius, 0, 0);
+  FSpeed := ASpeed;
 end;
 
 end.

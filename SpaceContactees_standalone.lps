@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <Units Count="17">
+    <Units Count="21">
       <Unit0>
         <Filename Value="SpaceContactees_standalone.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -30,255 +30,246 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="GameViewMain"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="40"/>
-        <CursorPos X="94" Y="82"/>
+        <TopLine Value="70"/>
+        <CursorPos X="51" Y="89"/>
         <UsageCount Value="221"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_single.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="76"/>
-        <CursorPos X="10" Y="91"/>
-        <UsageCount Value="102"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSolarSystem"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="30"/>
+        <CursorPos X="33" Y="50"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
-        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_float.inc"/>
+        <Filename Value="code\SolarSystem\usolar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSolar"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="12"/>
-        <CursorPos X="3" Y="29"/>
+        <CursorPos Y="14"/>
         <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uPlanet"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="10"/>
+        <CursorPos X="43" Y="27"/>
+        <UsageCount Value="103"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_single.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="76"/>
+        <CursorPos X="10" Y="91"/>
+        <UsageCount Value="101"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_float.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
+        <CursorPos X="3" Y="29"/>
+        <UsageCount Value="103"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="D:\Programs\Castle Game Engine\src\scene\castlescene_abstractprimitive.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="63"/>
         <CursorPos X="6" Y="82"/>
-        <UsageCount Value="72"/>
-      </Unit6>
-      <Unit7>
+        <UsageCount Value="71"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="D:\Programs\Castle Game Engine\src\base\castlecolors.pas"/>
         <UnitName Value="CastleColors"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="38"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="92"/>
         <CursorPos X="9" Y="52"/>
-        <UsageCount Value="105"/>
-        <Loaded Value="True"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="uSolarSystem"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="36"/>
-        <CursorPos X="141" Y="53"/>
-        <UsageCount Value="98"/>
-        <Loaded Value="True"/>
-      </Unit8>
-      <Unit9>
+        <UsageCount Value="104"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="D:\Programs\Castle Game Engine\src\transform\castletransform_transform.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1582"/>
         <CursorPos X="3" Y="50"/>
-        <UsageCount Value="7"/>
-      </Unit9>
-      <Unit10>
-        <Filename Value="code\SolarSystem\usolar.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="uSolar"/>
-        <EditorIndex Value="7"/>
-        <CursorPos Y="14"/>
-        <UsageCount Value="96"/>
-        <Loaded Value="True"/>
-      </Unit10>
-      <Unit11>
+        <UsageCount Value="6"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="CastleEngineManifest.xml"/>
         <EditorIndex Value="1"/>
         <CursorPos X="37" Y="17"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="51"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="XML"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="code\SolarSystem\uplanet.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="uPlanet"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="28"/>
-        <CursorPos X="69" Y="53"/>
-        <UsageCount Value="95"/>
-        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="D:\Programs\lazarus\fpc\3.2.2\source\packages\rtl-generics\src\generics.collections.pas"/>
         <UnitName Value="Generics.Collections"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="403"/>
-        <CursorPos X="3" Y="423"/>
-        <UsageCount Value="7"/>
+        <TopLine Value="1423"/>
+        <CursorPos Y="1440"/>
+        <UsageCount Value="9"/>
       </Unit13>
       <Unit14>
         <Filename Value="D:\Programs\lazarus\fpc\3.2.2\source\rtl\objpas\math.pp"/>
         <UnitName Value="Math"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="715"/>
-        <CursorPos X="18" Y="743"/>
-        <UsageCount Value="24"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2632"/>
+        <CursorPos X="55" Y="2640"/>
+        <UsageCount Value="25"/>
       </Unit14>
       <Unit15>
         <Filename Value="D:\Programs\lazarus\fpc\3.2.2\source\rtl\inc\mathh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="88"/>
         <CursorPos X="14" Y="105"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit15>
       <Unit16>
         <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_generic_float_record.inc"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="247"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="61"/>
         <CursorPos X="3" Y="186"/>
         <UsageCount Value="24"/>
-        <Loaded Value="True"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectorsinternalsingle.pas"/>
+        <UnitName Value="CastleVectorsInternalSingle"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="82" Y="6"/>
+        <UsageCount Value="10"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="D:\Programs\Castle Game Engine\src\ui\castleuicontrols_view.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="165"/>
+        <CursorPos X="49" Y="763"/>
+        <UsageCount Value="9"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="D:\Programs\Castle Game Engine\src\ui\castleuicontrols_userinterface.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="461"/>
+        <CursorPos X="77" Y="442"/>
+        <UsageCount Value="9"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="D:\Programs\Castle Game Engine\src\scene\castlescene.pas"/>
+        <UnitName Value="CastleScene"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="205"/>
+        <CursorPos X="75" Y="206"/>
+        <UsageCount Value="9"/>
+      </Unit20>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="24" HistoryIndex="23">
       <Position1>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="67" Column="3" TopLine="43"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="53" Column="58" TopLine="34"/>
       </Position1>
       <Position2>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="64" Column="64" TopLine="43"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="53" Column="111" TopLine="34"/>
       </Position2>
       <Position3>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="22" Column="27" TopLine="4"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="49" Column="111" TopLine="36"/>
       </Position3>
       <Position4>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="67" Column="32" TopLine="40"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="70" Column="17" TopLine="48"/>
       </Position4>
       <Position5>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="67" Column="3" TopLine="40"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="76" Column="13" TopLine="47"/>
       </Position5>
       <Position6>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="24" Column="28" TopLine="10"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="69" Column="86" TopLine="31"/>
       </Position6>
       <Position7>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="54" Column="21" TopLine="31"/>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <Caret Line="25" Column="31" TopLine="8"/>
       </Position7>
       <Position8>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="55" Column="42" TopLine="37"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="35" Column="50" TopLine="18"/>
       </Position8>
       <Position9>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="39" Column="28" TopLine="13"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="47" Column="17" TopLine="24"/>
       </Position9>
       <Position10>
-        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlecolors.pas"/>
-        <Caret Line="184" Column="13" TopLine="274"/>
+        <Filename Value="code\gameviewmain.pas"/>
+        <Caret Line="82" Column="94" TopLine="57"/>
       </Position10>
       <Position11>
         <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="14" Column="15" TopLine="2"/>
+        <Caret Line="33" Column="41" TopLine="16"/>
       </Position11>
       <Position12>
         <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="19" Column="20"/>
+        <Caret Line="59" Column="27" TopLine="75"/>
       </Position12>
       <Position13>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="28" Column="3"/>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <Caret Line="25" Column="6" TopLine="8"/>
       </Position13>
       <Position14>
         <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="20" Column="18"/>
+        <Caret Line="93" Column="94" TopLine="76"/>
       </Position14>
       <Position15>
-        <Filename Value="code\SolarSystem\usolar.pas"/>
-        <Caret Line="20" Column="19"/>
+        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
+        <Caret Line="86" Column="61" TopLine="63"/>
       </Position15>
       <Position16>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="32" Column="42" TopLine="7"/>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <Caret Line="61" Column="74" TopLine="32"/>
       </Position16>
       <Position17>
-        <Filename Value="code\gameviewmain.pas"/>
-        <Caret Line="64" Column="15" TopLine="34"/>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <Caret Line="57" Column="20" TopLine="29"/>
       </Position17>
       <Position18>
         <Filename Value="code\SolarSystem\uplanet.pas"/>
-        <Caret Line="22" Column="20"/>
+        <Caret Line="58" Column="81" TopLine="29"/>
       </Position18>
       <Position19>
         <Filename Value="code\SolarSystem\uplanet.pas"/>
-        <Caret Line="25" Column="26" TopLine="14"/>
+        <Caret Line="57" Column="71" TopLine="29"/>
       </Position19>
       <Position20>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="12" Column="48"/>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <Caret Line="58" TopLine="34"/>
       </Position20>
       <Position21>
         <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="35" Column="45" TopLine="7"/>
+        <Caret Line="92" Column="48" TopLine="69"/>
       </Position21>
       <Position22>
         <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="17" Column="25"/>
+        <Caret Line="91" Column="61" TopLine="69"/>
       </Position22>
       <Position23>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="25" Column="13" TopLine="6"/>
+        <Filename Value="code\SolarSystem\uplanet.pas"/>
+        <Caret Line="63" Column="49" TopLine="34"/>
       </Position23>
       <Position24>
         <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="32" Column="8" TopLine="24"/>
+        <Caret Line="91" Column="86" TopLine="69"/>
       </Position24>
-      <Position25>
-        <Filename Value="D:\Programs\lazarus\fpc\3.2.2\source\rtl\objpas\math.pp"/>
-        <Caret Line="315" Column="18" TopLine="308"/>
-      </Position25>
-      <Position26>
-        <Filename Value="D:\Programs\lazarus\fpc\3.2.2\source\rtl\objpas\math.pp"/>
-        <Caret Line="743" Column="18" TopLine="715"/>
-      </Position26>
-      <Position27>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="53" Column="58" TopLine="34"/>
-      </Position27>
-      <Position28>
-        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_float.inc"/>
-        <Caret Line="105" Column="67" TopLine="79"/>
-      </Position28>
-      <Position29>
-        <Filename Value="D:\Programs\Castle Game Engine\src\base\castlevectors_float.inc"/>
-        <Caret Line="29" Column="3" TopLine="12"/>
-      </Position29>
-      <Position30>
-        <Filename Value="code\SolarSystem\usolarsystem.pas"/>
-        <Caret Line="53" Column="111" TopLine="34"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
-  <Debugging>
-    <Watches>
-      <Item>
-        <Expression Value="PlanetScene.Parent"/>
-      </Item>
-      <Item>
-        <Expression Value="Event"/>
-      </Item>
-    </Watches>
-  </Debugging>
 </CONFIG>

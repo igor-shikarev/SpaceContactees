@@ -80,7 +80,14 @@ begin
   begin
     //Sphere2.Translation := RotatePointAroundAxis90(Sphere1.Translation, Sphere2.Translation);
     PlanetScene.Rotation := Vector4(PlanetScene.Rotation.XYZ, PlanetScene.Rotation.W + 0.01);
-    Exit(true); // key was handled
+    Exit(True); // key was handled
+  end;
+
+  if Event.IsKey(keyHome) then
+  begin
+    Viewport1.Camera.Translation := Vector3(0, 0, 5);
+    Viewport1.Camera.Direction := Vector3(0, 0, -1);
+    Exit(True); // key was handled
   end;
 
   { This virtual method is executed when user presses
