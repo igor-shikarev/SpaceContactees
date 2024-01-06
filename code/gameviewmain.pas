@@ -10,7 +10,7 @@ interface
 uses Classes,
   CastleVectors, CastleComponentSerialize,
   CastleUIControls, CastleControls, CastleKeysMouse,
-  CastleTransform, CastleScene, CastleViewport,
+  CastleTransform, CastleScene, CastleViewport, CastleThirdPersonNavigation,
   uSolarSystem;
 
 type
@@ -20,13 +20,12 @@ type
     { Components designed using CGE editor.
       These fields will be automatically initialized at Start. }
     LabelFps: TCastleLabel;
-    Viewport1: TCastleViewport;
-    SunScene: TCastleScene;
-    PlanetScene: TCastleScene;
-    Sphere1: TCastleSphere;
+    Viewport: TCastleViewport;
   private
-    FSphere2: TCastleSphere;
+    FDefCameraTranslation: TVector3;
+    FDefCameraDirection: TVector3;
     FSolarSystem: TSolarSystem;
+    FCameraPlanetIdx: Integer;
   public
     constructor Create(AOwner: TComponent); override;
     procedure Start; override;
@@ -52,14 +51,12 @@ end;
 procedure TViewMain.Start;
 begin
   inherited;
-
-  //FSphere2 := TCastleSphere.Create(PlanetScene);
-  //FSphere2.Color := Fuchsia;
-  //FSphere2.TranslationXY := Vector2(2, 2);
-  //PlanetScene.Add(FSphere2);
+  FDefCameraTranslation := Viewport.Camera.Translation;
+  FDefCameraDirection := Viewport.Camera.Direction;
+  FCameraPlanetIdx := 0;
 
   FSolarSystem := TSolarSystem.Create(Self);
-  Viewport1.Items.Add(FSolarSystem);
+  Viewport.Items.Add(FSolarSystem);
   FSolarSystem.Translation := Vector3(0, 0, 0);
 end;
 
@@ -76,17 +73,26 @@ begin
   Result := inherited;
   if Result then Exit; // allow the ancestor to handle keys
 
-  if Event.IsKey(keySpace) then
+  if Event.IsKey(keyHome) then
   begin
-    //Sphere2.Translation := RotatePointAroundAxis90(Sphere1.Translation, Sphere2.Translation);
-    PlanetScene.Rotation := Vector4(PlanetScene.Rotation.XYZ, PlanetScene.Rotation.W + 0.01);
+    FCameraPlanetIdx := 0;
+    Viewport.Camera.Parent.Remove(Viewport.Camera);
+    Viewport.Items.Add(Viewport.Camera);
+    Viewport.Camera.Translation := FDefCameraTranslation;
+    Viewport.Camera.Direction := FDefCameraDirection;
     Exit(True); // key was handled
   end;
 
-  if Event.IsKey(keyHome) then
+  if Event.IsKey(keyP) then
   begin
-    Viewport1.Camera.Translation := Vector3(0, 0, 5);
-    Viewport1.Camera.Direction := Vector3(0, 0, -1);
+    if FCameraPlanetIdx > FSolarSystem.PlanetList.Count - 1 then
+      FCameraPlanetIdx := 0;
+
+    Viewport.Camera.Parent.Remove(Viewport.Camera);
+    FSolarSystem.PlanetList[FCameraPlanetIdx].Add(Viewport.Camera);
+    Viewport.Camera.Translation := FSolarSystem.PlanetList[FCameraPlanetIdx].Planet.Translation + Vector3(-10, 0, 0);
+    Viewport.Camera.Direction := Viewport.Camera.Translation;
+    Inc(FCameraPlanetIdx);
     Exit(True); // key was handled
   end;
 

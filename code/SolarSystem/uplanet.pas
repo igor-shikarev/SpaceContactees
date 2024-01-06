@@ -17,17 +17,18 @@ type
   TPlanet = class(TCastleTransform)
   private
     FPlanet: TCastleScene;
-    FSphere: TCastleSphere;
     FSpeed: Single;
   public
-    constructor Create(AOwner: TComponent); override;
-    procedure Update(const SecondsPassed: Single; var RemoveMe: TRemoveType); override;
     {
-    Установка параметров планеты
     AOrbitalRadius - радиус орбиты планеты
-    ASpeed - скорость вращения вокруг солнца
+    ASpeed - угловая скорость вращения вокруг солнца
+    AModelUrl - URL модели
     }
-    procedure SetParams(const AOrbitalRadius, ASpeed: Single);
+    constructor Create(AOwner: TComponent; const AOrbitalRadius,
+      ASpeed: Single; const AModelUrl: String); overload;
+    procedure Update(const SecondsPassed: Single; var RemoveMe: TRemoveType); override;
+
+    property Planet: TCastleScene read FPlanet;
 	end;
 
 implementation
@@ -37,31 +38,22 @@ uses
 
 { TPlanet }
 
-constructor TPlanet.Create(AOwner: TComponent);
+constructor TPlanet.Create(AOwner: TComponent; const AOrbitalRadius,
+  ASpeed: Single; const AModelUrl: String);
 begin
   inherited Create(AOwner);
   FPlanet := TCastleScene.Create(Self);
-
-  FSphere := TCastleSphere.Create(Self);
-  FSphere.Color := Yellow;
-
-  FPlanet.Add(FSphere);
   Self.Add(FPlanet);
-
-  FPlanet.Translation := Vector3(0, 0, 0);
-  FSphere.Translation := Vector3(0, 0, 0);
+  FPlanet.Translation := Vector3(AOrbitalRadius, 0, 0);
+  FSpeed := ASpeed;
+  FPlanet.Url := AModelUrl;
+  FPlanet.ReloadUrl;
 end;
 
 procedure TPlanet.Update(const SecondsPassed: Single; var RemoveMe: TRemoveType);
 begin
   inherited Update(SecondsPassed, RemoveMe);
   Self.Rotation := Vector4(Self.Rotation.XYZ, Self.Rotation.W + (FSpeed * SecondsPassed));
-end;
-
-procedure TPlanet.SetParams(const AOrbitalRadius, ASpeed: Single);
-begin
-  FSphere.Translation := Vector3(AOrbitalRadius, 0, 0);
-  FSpeed := ASpeed;
 end;
 
 end.

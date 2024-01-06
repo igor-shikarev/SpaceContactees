@@ -14,9 +14,12 @@ type
   TSolar = class(TCastleTransform)
   private
     FSolar: TCastleScene;
-    FSphere: TCastleSphere;
+    FLight: TCastlePointLight;
   public
-    constructor Create(AOwner: TComponent); override;
+    {
+    ALightRadius - радиус света от солнца
+    }
+    constructor Create(AOwner: TComponent; const ALightRadius: Single); overload;
     procedure Update(const SecondsPassed: Single; var RemoveMe: TRemoveType); override;
 	end;
 
@@ -27,19 +30,25 @@ uses
 
 { TSolar }
 
-constructor TSolar.Create(AOwner: TComponent);
+constructor TSolar.Create(AOwner: TComponent; const ALightRadius: Single);
 begin
   inherited Create(AOwner);
   FSolar := TCastleScene.Create(Self);
-
-  FSphere := TCastleSphere.Create(Self);
-  FSphere.Color := Fuchsia;
-
-  FSolar.Add(FSphere);
   Self.Add(FSolar);
-
   FSolar.Translation := Vector3(0, 0, 0);
-  FSphere.Translation := Vector3(0, 0, 0);
+  FSolar.Scale := Vector3(0.5, 0.5, 0.5);
+  FSolar.Url := 'castle-data:/models/star-sun/scene.gltf';
+  FSolar.AnimateOnlyWhenVisible := True;
+  FSolar.AutoAnimation := 'Take 001';
+  FSolar.TimePlayingSpeed := 0.05;
+
+  FLight := TCastlePointLight.Create(Self);
+  Self.Add(FLight);
+  FLight.Color := WhiteRGB;
+  FLight.Intensity := 8;
+  FLight.Attenuation := Vector3(0, 0, 1);
+  FLight.Translation := Vector3(0, 0, 0);
+  FLight.Radius := ALightRadius;
 end;
 
 procedure TSolar.Update(const SecondsPassed: Single; var RemoveMe: TRemoveType);

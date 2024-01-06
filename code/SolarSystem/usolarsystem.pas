@@ -24,6 +24,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Update(const SecondsPassed: Single; var RemoveMe: TRemoveType); override;
+
+    property PlanetList: TPlanetList read FPlanetList;
 	end;
 
 implementation
@@ -33,7 +35,7 @@ uses
 
 const
   {
-  Радиус орбит планет (ае)
+  Радиус орбит условных планет (ае)
   Меркурий  - 0.4
   Венера    - 0.7
   Земля     - 1
@@ -46,8 +48,7 @@ const
   }
   cOrbitalRadius: array[0..8] of Single = (0.4, 0.7, 1, 1.6, 5.2, 10, 19.6, 30, 38.8);
   {
-  Угловая скорость планет (рад/сек)
-  Земля вращается за 365дн., пусть день в игре равен 8ч, тогда скорость будет 0,0057рад/сек
+  Период обращения условных планет вокруг солнца (год)
   Меркурий  - 0.241
   Венера    - 0.615
   Земля     - 1
@@ -58,11 +59,35 @@ const
   Нептун    - 164.79
   Плутон    - 242.92
   }
-  cSpeed: array[0..8] of Single = (0.241, 0.615, 1, 1.88, 11.857, 29.4, 84.02, 164.79, 242.92);
+  cPeriodRot: array[0..8] of Single = (0.24, 0.62, 1, 1.88, 11.86, 29.4, 84.02, 164.79, 242.92);
+  {
+  Ссылки на модели для условных планет
+  Меркурий
+  Венера
+  Земля
+  Марс
+  Юпитер
+  Сатурн
+  Уран
+  Нептун
+  Плутон
+  }
+  cModelUrl: array[0..8] of String = (
+    'castle-data:/models/planet-mercury/scene.gltf',
+    'castle-data:/models/planet-venus/scene.gltf',
+    'castle-data:/models/planet-earth/scene.gltf',
+    'castle-data:/models/planet-mars/scene.gltf',
+    'castle-data:/models/planet-jupiter/scene.gltf',
+    'castle-data:/models/planet-saturn/scene.gltf',
+    'castle-data:/models/planet-uranus/scene.gltf',
+    'castle-data:/models/planet-lava/scene.gltf',
+    'castle-data:/models/planet-phoenix/scene.gltf'
+  );
   // Астрономическая единица (ае)
   cAE = 100;
   // Угловая скорость условной Земли (рад/сек)
-  cDefSpeed = 0.0057;
+  // Земля вращается за 365дн., пусть день в игре равен 8ч
+  cDefSpeed = (2 * PI) / (365 * 8 * 60 * 60);
 
 
 { TSolarSystem }
@@ -73,22 +98,19 @@ var
   vPlanet: TPlanet;
   vRot: TVector4;
   vFlag: Boolean;
+  vMaxOrbitalRadius: Single;
 begin
   inherited Create(AOwner);
-
-  // создание солнца
-  FSolar := TSolar.Create(Self);
-  Self.Add(FSolar);
-  FSolar.Translation := Vector3(0, 0, 0);
 
   // создание планет и начальное их расположение в пространстве
   FPlanetList := TPlanetList.Create(True);
   for i := Low(cOrbitalRadius) to High(cOrbitalRadius) do
   begin
-    vPlanet := TPlanet.Create(Self);
+    vMaxOrbitalRadius := Max(vMaxOrbitalRadius, cOrbitalRadius[i] * cAE);
+
+    vPlanet := TPlanet.Create(Self, cOrbitalRadius[i] * cAE, SimpleRoundTo(cDefSpeed / cPeriodRot[i], -6), cModelUrl[i]);
     Self.Add(vPlanet);
     vPlanet.Translation := Vector3(0, 0, 0);
-    vPlanet.SetParams(cOrbitalRadius[i] * cAE, SimpleRoundTo(cSpeed[i] * cDefSpeed, -4));
 
     // подбор уникального начального положения
     vFlag := True;
@@ -112,6 +134,11 @@ begin
 
     FPlanetList.Add(vPlanet);
 	end;
+
+  // создание солнца
+  FSolar := TSolar.Create(Self, vMaxOrbitalRadius);
+  Self.Add(FSolar);
+  FSolar.Translation := Vector3(0, 0, 0);
 end;
 
 destructor TSolarSystem.Destroy;

@@ -17,3 +17,4 @@ AndroidSigningProperties.txt
 
 # ignore dirs
 backup
+ForTest
