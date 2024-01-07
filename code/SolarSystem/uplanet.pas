@@ -46,8 +46,7 @@ begin
   Self.Add(FPlanet);
   FPlanet.Translation := Vector3(AOrbitalRadius, 0, 0);
   FSpeed := ASpeed;
-  FPlanet.Url := AModelUrl;
-  FPlanet.ReloadUrl;
+  FPlanet.Load(AModelUrl);
 end;
 
 procedure TPlanet.Update(const SecondsPassed: Single; var RemoveMe: TRemoveType);

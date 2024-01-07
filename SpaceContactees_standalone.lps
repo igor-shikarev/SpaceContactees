@@ -40,7 +40,6 @@
         <Filename Value="code\SolarSystem\usolarsystem.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uSolarSystem"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <TopLine Value="119"/>
         <CursorPos X="50" Y="139"/>
@@ -61,9 +60,10 @@
         <Filename Value="code\SolarSystem\uplanet.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPlanet"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
         <TopLine Value="23"/>
-        <CursorPos Y="47"/>
+        <CursorPos Y="49"/>
         <UsageCount Value="158"/>
         <Loaded Value="True"/>
       </Unit6>
