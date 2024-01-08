@@ -69,12 +69,6 @@
       "Name" : "Viewport",
       "VerticalAnchorParent" : "vpTop",
       "VerticalAnchorSelf" : "vpTop",
-      "$Children" : [
-        {
-          "$$ClassName" : "TCastleExamineNavigation",
-          "Name" : "ExamineNavigation1"
-        }
-      ],
       "InternalDesignCamera" : {
         "$$ClassName" : "TCastleCamera",
         "Name" : "",

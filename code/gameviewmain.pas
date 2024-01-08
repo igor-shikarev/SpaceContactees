@@ -10,7 +10,7 @@ interface
 uses Classes,
   CastleVectors, CastleComponentSerialize,
   CastleUIControls, CastleControls, CastleKeysMouse,
-  CastleTransform, CastleScene, CastleViewport, CastleThirdPersonNavigation,
+  CastleTransform, CastleScene, CastleViewport, CastleThirdPersonNavigation, CastleCameras,
   uSolarSystem;
 
 type
@@ -49,8 +49,13 @@ begin
 end;
 
 procedure TViewMain.Start;
+var
+  vNavigation: TCastleExamineNavigation;
 begin
   inherited;
+  vNavigation := TCastleExamineNavigation.Create(Self);
+  Viewport.InsertBack(vNavigation);
+
   FDefCameraTranslation := Viewport.Camera.Translation;
   FDefCameraDirection := Viewport.Camera.Direction;
   FCameraPlanetIdx := 0;
