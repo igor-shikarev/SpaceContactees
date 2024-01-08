@@ -18,5 +18,6 @@ AndroidSigningProperties.txt
 # ignore dirs
 backup
 ForTest
-/SpaceContactees_standalone.lps
-/SpaceContactees_standalone.lps
+
+# ignore files
+SpaceContactees_standalone.lps
