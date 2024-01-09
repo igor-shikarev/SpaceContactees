@@ -11,7 +11,7 @@ uses Classes,
   CastleVectors, CastleComponentSerialize,
   CastleUIControls, CastleControls, CastleKeysMouse,
   CastleTransform, CastleScene, CastleViewport, CastleThirdPersonNavigation, CastleCameras,
-  uSolarSystem;
+  uSolarSystem, uSpaceShip;
 
 type
   { Main view, where most of the application logic takes place. }
@@ -26,6 +26,7 @@ type
     FDefCameraDirection: TVector3;
     FSolarSystem: TSolarSystem;
     FCameraPlanetIdx: Integer;
+    FSpaceShip: TSpaceShip;
   public
     constructor Create(AOwner: TComponent); override;
     procedure Start; override;
@@ -50,10 +51,10 @@ end;
 
 procedure TViewMain.Start;
 var
-  vNavigation: TCastleExamineNavigation;
+  vNavigation: TCastleThirdPersonNavigation;
 begin
   inherited;
-  vNavigation := TCastleExamineNavigation.Create(Self);
+  vNavigation := TCastleThirdPersonNavigation.Create(Self);
   Viewport.InsertBack(vNavigation);
 
   FDefCameraTranslation := Viewport.Camera.Translation;
@@ -63,6 +64,10 @@ begin
   FSolarSystem := TSolarSystem.Create(Self);
   Viewport.Items.Add(FSolarSystem);
   FSolarSystem.Translation := Vector3(0, 0, 0);
+
+  FSpaceShip := TSpaceShip.Create(Self);
+  FSolarSystem.Add(FSpaceShip);
+  vNavigation.Avatar := FSpaceShip;
 end;
 
 procedure TViewMain.Update(const SecondsPassed: Single; var HandleInput: Boolean);
