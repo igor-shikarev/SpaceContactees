@@ -69,15 +69,6 @@
       "Name" : "Viewport",
       "VerticalAnchorParent" : "vpTop",
       "VerticalAnchorSelf" : "vpTop",
-      "$Children" : [
-        {
-          "$$ClassName" : "TCastleWalkNavigation",
-          "Exists" : false,
-          "Gravity" : false,
-          "MoveSpeed" : 1.0000000000000000E+001,
-          "Name" : "WalkNavigation1"
-        }
-      ],
       "InternalDesignCamera" : {
         "$$ClassName" : "TCastleCamera",
         "Name" : "",
