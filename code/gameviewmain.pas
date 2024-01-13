@@ -10,7 +10,7 @@ interface
 uses Classes,
   CastleVectors, CastleComponentSerialize,
   CastleUIControls, CastleControls, CastleKeysMouse,
-  CastleTransform, CastleScene, CastleViewport, CastleThirdPersonNavigation, CastleCameras,
+  CastleTransform, CastleScene, CastleViewport, CastleCameras,
   uSolarSystem, uSpaceShip;
 
 type
@@ -39,7 +39,7 @@ var
 
 implementation
 
-uses SysUtils, CastleColors;
+uses SysUtils, CastleColors, uSpaceShipNavigator;
 
 { TViewMain ----------------------------------------------------------------- }
 
@@ -51,11 +51,11 @@ end;
 
 procedure TViewMain.Start;
 var
-  vNavigation: TCastleThirdPersonNavigation;
+  vNavigation: TSpaceShipNavigator;
 begin
   inherited;
-  vNavigation := TCastleThirdPersonNavigation.Create(Self);
-  Viewport.InsertBack(vNavigation);
+  vNavigation := TSpaceShipNavigator.Create(Self);
+  Viewport.InsertFront(vNavigation);
 
   FDefCameraTranslation := Viewport.Camera.Translation;
   FDefCameraDirection := Viewport.Camera.Direction;
@@ -67,7 +67,7 @@ begin
 
   FSpaceShip := TSpaceShip.Create(Self);
   FSolarSystem.Add(FSpaceShip);
-  vNavigation.Avatar := FSpaceShip;
+  //vNavigation.Avatar := FSpaceShip;
 end;
 
 procedure TViewMain.Update(const SecondsPassed: Single; var HandleInput: Boolean);
