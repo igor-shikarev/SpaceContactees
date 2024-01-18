@@ -65,9 +65,9 @@ begin
   Viewport.Items.Add(FSolarSystem);
   FSolarSystem.Translation := Vector3(0, 0, 0);
 
-  FSpaceShip := TSpaceShip.Create(Self);
+  FSpaceShip := TSpaceShip.Create(Self, Viewport);
   FSolarSystem.Add(FSpaceShip);
-  //vNavigation.Avatar := FSpaceShip;
+  vNavigation.SpaceShip := FSpaceShip;
 end;
 
 procedure TViewMain.Update(const SecondsPassed: Single; var HandleInput: Boolean);
