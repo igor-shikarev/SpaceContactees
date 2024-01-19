@@ -11,16 +11,19 @@ uses
   CastleTransform, CastleScene, CastleViewport;
 
 type
-  TSpaceShip = class(TCastleScene)
+  TSpaceShip = class(TCastleTransform)
   private
     //FSolar: TCastleScene;
-    FSpaceShip: TCastleSphere;
+    FSpaceShip: TCastleBox;
     FViewport: TCastleViewport;
   public
     constructor Create(AOwner: TComponent; AViewport: TCastleViewport); overload;
 	end;
 
 implementation
+
+uses
+  Math;
 
 { TSpaceShip }
 
@@ -30,19 +33,21 @@ begin
 
   FViewport := AViewport;
 
-  Self.Translation := Vector3(3, 1, 4);
+  Self.Translation := Vector3(3, 1, -6);
 
-  FSpaceShip := TCastleSphere.Create(Self);
+  FSpaceShip := TCastleBox.Create(Self);
   Self.Add(FSpaceShip);
   FSpaceShip.Translation := Vector3(0, 0, 0);
-  FSpaceShip.Scale := Vector3(0.05, 0.05, 0.05);
+  FSpaceShip.Scale := Vector3(1, 1, 3);
+  FSpaceShip.Size := Vector3(0.2, 0.2, 0.2);
+  FSpaceShip.Material := pmUnlit;
 
   // перемещаем камеру как дочернюю
   FViewport.Camera.Parent.Remove(FViewport.Camera);
   Self.Add(FViewport.Camera);
-  FViewport.Camera.Translation := Vector3(0, 0, 1);
-  FViewport.Camera.Rotation := Vector4(0, 0, 0, 0);
-  FViewport.Camera.Direction := Vector3(0, 0, -1);
+  FViewport.Camera.Translation := Vector3(0, 0, -1.27);
+  FViewport.Camera.Rotation := Vector4(0, 1, 0, DegToRad(180));
+  FViewport.Camera.Direction := Vector3(0, 0, 1);
 end;
 
 end.

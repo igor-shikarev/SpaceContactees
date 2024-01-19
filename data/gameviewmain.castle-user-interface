@@ -109,27 +109,49 @@
       }
     },
     {
-      "$$ClassName" : "TCastleLabel",
-      "ColorPersistent" : {
-        "$$ClassName" : "TCastleColorPersistent",
-        "Blue" : 5.5294120311737061E-001,
-        "Green" : 3.0980393290519714E-001,
-        "Red" : 1.0000000000000000E+000
-      },
-      "FontSize" : 2.0000000000000000E+001,
-      "HorizontalAnchorParent" : "hpRight",
-      "HorizontalAnchorSelf" : "hpRight",
-      "Name" : "LabelFps",
-      "Text" : [
-        "FPS: xxx"
-      ],
-      "TranslationPersistent" : {
-        "$$ClassName" : "TCastleVector2Persistent",
-        "X" : -2.0000000000000000E+001,
-        "Y" : -2.0000000000000000E+001
-      },
+      "$$ClassName" : "TCastleVerticalGroup",
+      "Name" : "VerticalGroup1",
       "VerticalAnchorParent" : "vpTop",
-      "VerticalAnchorSelf" : "vpTop"
+      "VerticalAnchorSelf" : "vpTop",
+      "$Children" : [
+        {
+          "$$ClassName" : "TCastleLabel",
+          "ColorPersistent" : {
+            "$$ClassName" : "TCastleColorPersistent",
+            "Blue" : 5.5294120311737061E-001,
+            "Green" : 3.0980393290519714E-001,
+            "Red" : 1.0000000000000000E+000
+          },
+          "FontSize" : 2.0000000000000000E+001,
+          "Name" : "LabelFps",
+          "Text" : [
+            "FPS: xxx"
+          ],
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop"
+        },
+        {
+          "$$ClassName" : "TCastleLabel",
+          "ColorPersistent" : {
+            "$$ClassName" : "TCastleColorPersistent",
+            "Blue" : 5.5294120311737061E-001,
+            "Green" : 3.0980393290519714E-001,
+            "Red" : 1.0000000000000000E+000
+          },
+          "FontSize" : 2.0000000000000000E+001,
+          "Name" : "LabelDebug",
+          "Text" : [
+            "Info",
+            "Info"
+          ],
+          "TranslationPersistent" : {
+            "$$ClassName" : "TCastleVector2Persistent",
+            "Y" : -2.1999998092651367E+001
+          },
+          "VerticalAnchorParent" : "vpTop",
+          "VerticalAnchorSelf" : "vpTop"
+        }
+      ]
     }
   ]
 }

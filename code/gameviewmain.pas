@@ -20,6 +20,7 @@ type
     { Components designed using CGE editor.
       These fields will be automatically initialized at Start. }
     LabelFps: TCastleLabel;
+    LabelDebug: TCastleLabel;
     Viewport: TCastleViewport;
   private
     FDefCameraTranslation: TVector3;
@@ -39,7 +40,8 @@ var
 
 implementation
 
-uses SysUtils, CastleColors, uSpaceShipNavigator;
+uses
+  SysUtils, CastleColors, uSpaceShipNavigator, CastleUtils, CastleStringUtils;
 
 { TViewMain ----------------------------------------------------------------- }
 
@@ -76,6 +78,19 @@ begin
   { This virtual method is executed every frame (many times per second). }
   Assert(LabelFps <> nil, 'If you remove LabelFps from the design, remember to remove also the assignment "LabelFps.Caption := ..." from code');
   LabelFps.Caption := 'FPS: ' + Container.Fps.ToString;
+
+  LabelDebug.Caption :=
+    Format
+    (
+      'Direction: X = %f Y = %f Z = %f' + NL +
+      'Rotation: X = %f Y = %f Z = %f W = %f' + NL +
+      'UP: X = %f Y = %f Z = %f',
+      [
+        FSpaceShip.Direction.X, FSpaceShip.Direction.Y, FSpaceShip.Direction.Z,
+        FSpaceShip.Rotation.X, FSpaceShip.Rotation.Y, FSpaceShip.Rotation.Z, FSpaceShip.Rotation.W,
+        FSpaceShip.Up.X, FSpaceShip.Up.Y, FSpaceShip.Up.Z
+      ]
+    );
 end;
 
 function TViewMain.Press(const Event: TInputPressRelease): Boolean;

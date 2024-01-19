@@ -23,6 +23,7 @@ type
     FInput_Left: TInputShortcut;
     FInput_Up: TInputShortcut;
     FInput_Down: TInputShortcut;
+    FInput_SetHorizont: TInputShortcut;
 		FSpaceShip: TSpaceShip;
   private
     const
@@ -39,7 +40,7 @@ type
 implementation
 
 uses
-  CastleQuaternions;
+  Math;
 
 { TSpaceShipNavigator }
 
@@ -53,6 +54,7 @@ begin
   FInput_Left := TInputShortcut.Create(Self);
   FInput_Up := TInputShortcut.Create(Self);
   FInput_Down := TInputShortcut.Create(Self);
+  FInput_SetHorizont := TInputShortcut.Create(Self);
 
   FInput_Forward.Assign(keyW);
   FInput_Backward.Assign(keyS);
@@ -60,50 +62,63 @@ begin
   FInput_Left.Assign(keyArrowLeft);
   FInput_Up.Assign(keyArrowUp);
   FInput_Down.Assign(keyArrowDown);
-
-  //Gravity := False;
-  //MoveSpeed := 10;
+  FInput_SetHorizont.Assign(keyH);
 end;
 
 procedure TSpaceShipNavigator.Update(const SecondsPassed: Single;
   var HandleInput: Boolean);
 var
-  vRes: TVector3;
+  vVect: TVector3;
 begin
   inherited Update(SecondsPassed, HandleInput);
 
-  vRes := TVector3.Zero;
-
   if FInput_Left.IsPressed(Container) then
   begin
-    FSpaceShip.Direction := RotatePointAroundAxisRad(DefaultRotationHorizontalSpeed * SecondsPassed, FSpaceShip.Direction, FSpaceShip.Up.One[1]);
+    vVect := Vector3(0, 0, 1);
+    if Sign(FSpaceShip.Up.Z) < 0 then vVect := Vector3(0, 0, -1);
+    FSpaceShip.Direction := RotatePointAroundAxisRad(DefaultRotationHorizontalSpeed * SecondsPassed, FSpaceShip.Direction, vVect);
+    FSpaceShip.Up := RotatePointAroundAxisRad(DefaultRotationHorizontalSpeed * SecondsPassed, FSpaceShip.Up, vVect);
 	end;
 
   if FInput_Right.IsPressed(Container) then
   begin
-    FSpaceShip.Direction := RotatePointAroundAxisRad(-DefaultRotationHorizontalSpeed * SecondsPassed, FSpaceShip.Direction, FSpaceShip.Up.One[1]);
+    vVect := Vector3(0, 0, 1);
+    if Sign(FSpaceShip.Up.Z) < 0 then vVect := Vector3(0, 0, -1);
+    FSpaceShip.Direction := RotatePointAroundAxisRad(-DefaultRotationHorizontalSpeed * SecondsPassed, FSpaceShip.Direction, vVect);
+    FSpaceShip.Up := RotatePointAroundAxisRad(-DefaultRotationHorizontalSpeed * SecondsPassed, FSpaceShip.Up, vVect);
 	end;
 
   if FInput_Up.IsPressed(Container) then
   begin
-    FSpaceShip.Direction := RotatePointAroundAxisRad(DefaultRotationVerticalSpeed * SecondsPassed, FSpaceShip.Direction, FSpaceShip.Up.One[0]);
+    vVect := TVector3.CrossProduct(FSpaceShip.Direction, FSpaceShip.Up);
+    FSpaceShip.Direction := RotatePointAroundAxisRad(-DefaultRotationVerticalSpeed * SecondsPassed, FSpaceShip.Direction, vVect);
+    FSpaceShip.Up := RotatePointAroundAxisRad(-DefaultRotationVerticalSpeed * SecondsPassed, FSpaceShip.Up, vVect);
 	end;
 
   if FInput_Down.IsPressed(Container) then
   begin
-    FSpaceShip.Direction := RotatePointAroundAxisRad(-DefaultRotationVerticalSpeed * SecondsPassed, FSpaceShip.Direction, FSpaceShip.Up.One[0]);
+    vVect := TVector3.CrossProduct(FSpaceShip.Direction, FSpaceShip.Up);
+    FSpaceShip.Direction := RotatePointAroundAxisRad(DefaultRotationVerticalSpeed * SecondsPassed, FSpaceShip.Direction, vVect);
+    FSpaceShip.Up := RotatePointAroundAxisRad(DefaultRotationVerticalSpeed * SecondsPassed, FSpaceShip.Up, vVect);
 	end;
 
   if FInput_Forward.IsPressed(Container) then
   begin
-    vRes := vRes - FSpaceShip.Direction * DefaultMoveSpeed * SecondsPassed;
-    FSpaceShip.Move(vRes, False, False);
+    vVect := TVector3.Zero;
+    vVect := vVect + FSpaceShip.Direction * DefaultMoveSpeed * SecondsPassed;
+    FSpaceShip.Move(vVect, False, False);
 	end;
 
   if FInput_Backward.IsPressed(Container) then
   begin
-    vRes := vRes + FSpaceShip.Direction * DefaultMoveSpeed * SecondsPassed;
-    FSpaceShip.Move(vRes, False, False);
+    vVect := TVector3.Zero;
+    vVect := vVect - FSpaceShip.Direction * DefaultMoveSpeed * SecondsPassed;
+    FSpaceShip.Move(vVect, False, False);
+	end;
+
+  if FInput_SetHorizont.IsPressed(Container) then
+  begin
+    FSpaceShip.Up := Vector3(0, 1, 0);
 	end;
 
 end;
