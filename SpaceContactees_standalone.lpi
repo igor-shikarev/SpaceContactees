@@ -30,7 +30,7 @@
         <PackageName Value="castle_base"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="9">
       <Unit0>
         <Filename Value="SpaceContactees_standalone.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -65,6 +65,16 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPlanet"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="code/SpaceShip/uspaceship.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSpaceShip"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="code/SpaceShip/uspaceshipnavigator.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSpaceShipNavigator"/>
+      </Unit8>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -74,7 +84,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="code"/>
-      <OtherUnitFiles Value="code;code/SolarSystem"/>
+      <OtherUnitFiles Value="code;code/SolarSystem;code/SpaceShip"/>
       <UnitOutputDirectory Value="castle-engine-output/standalone/lazarus-lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

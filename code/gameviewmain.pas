@@ -10,8 +10,8 @@ interface
 uses Classes,
   CastleVectors, CastleComponentSerialize,
   CastleUIControls, CastleControls, CastleKeysMouse,
-  CastleTransform, CastleScene, CastleViewport, CastleThirdPersonNavigation, CastleCameras,
-  uSolarSystem;
+  CastleTransform, CastleScene, CastleViewport, CastleCameras,
+  uSolarSystem, uSpaceShip;
 
 type
   { Main view, where most of the application logic takes place. }
@@ -20,12 +20,14 @@ type
     { Components designed using CGE editor.
       These fields will be automatically initialized at Start. }
     LabelFps: TCastleLabel;
+    LabelDebug: TCastleLabel;
     Viewport: TCastleViewport;
   private
     FDefCameraTranslation: TVector3;
     FDefCameraDirection: TVector3;
     FSolarSystem: TSolarSystem;
     FCameraPlanetIdx: Integer;
+    FSpaceShip: TSpaceShip;
   public
     constructor Create(AOwner: TComponent); override;
     procedure Start; override;
@@ -38,7 +40,8 @@ var
 
 implementation
 
-uses SysUtils, CastleColors;
+uses
+  SysUtils, CastleColors, uSpaceShipNavigator, CastleUtils, CastleStringUtils;
 
 { TViewMain ----------------------------------------------------------------- }
 
@@ -50,11 +53,11 @@ end;
 
 procedure TViewMain.Start;
 var
-  vNavigation: TCastleExamineNavigation;
+  vNavigation: TSpaceShipNavigator;
 begin
   inherited;
-  vNavigation := TCastleExamineNavigation.Create(Self);
-  Viewport.InsertBack(vNavigation);
+  vNavigation := TSpaceShipNavigator.Create(Self);
+  Viewport.InsertFront(vNavigation);
 
   FDefCameraTranslation := Viewport.Camera.Translation;
   FDefCameraDirection := Viewport.Camera.Direction;
@@ -63,6 +66,10 @@ begin
   FSolarSystem := TSolarSystem.Create(Self);
   Viewport.Items.Add(FSolarSystem);
   FSolarSystem.Translation := Vector3(0, 0, 0);
+
+  FSpaceShip := TSpaceShip.Create(Self, Viewport);
+  FSolarSystem.Add(FSpaceShip);
+  vNavigation.SpaceShip := FSpaceShip;
 end;
 
 procedure TViewMain.Update(const SecondsPassed: Single; var HandleInput: Boolean);
@@ -71,6 +78,19 @@ begin
   { This virtual method is executed every frame (many times per second). }
   Assert(LabelFps <> nil, 'If you remove LabelFps from the design, remember to remove also the assignment "LabelFps.Caption := ..." from code');
   LabelFps.Caption := 'FPS: ' + Container.Fps.ToString;
+
+  LabelDebug.Caption :=
+    Format
+    (
+      'Direction: X = %f Y = %f Z = %f' + NL +
+      'Rotation: X = %f Y = %f Z = %f W = %f' + NL +
+      'UP: X = %f Y = %f Z = %f',
+      [
+        FSpaceShip.Direction.X, FSpaceShip.Direction.Y, FSpaceShip.Direction.Z,
+        FSpaceShip.Rotation.X, FSpaceShip.Rotation.Y, FSpaceShip.Rotation.Z, FSpaceShip.Rotation.W,
+        FSpaceShip.Up.X, FSpaceShip.Up.Y, FSpaceShip.Up.Z
+      ]
+    );
 end;
 
 function TViewMain.Press(const Event: TInputPressRelease): Boolean;
